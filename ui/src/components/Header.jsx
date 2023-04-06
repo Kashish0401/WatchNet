@@ -1,14 +1,19 @@
-import React from 'react';
-import {FaSearch} from 'react-icons/fa'
+import '../Styles/Header.css'
+import {FaSearch, FaUserCircle} from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 
-const Header = () => {
+const Header = (props) => {
+  const navigate=  useNavigate();
   return (
-    <div>
+    <>
       <div className="header">
         <h2>WatchNet</h2>
-        <FaSearch/>
+        <div className="icons">
+          <FaSearch className='icon' size={25}/>
+          <FaUserCircle className='icon' size={25}/>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

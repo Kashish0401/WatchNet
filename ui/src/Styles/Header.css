@@ -1,0 +1,26 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #00050d;
+    color: white;
+    position:sticky;
+    top: 0;
+    font-weight: 400;
+    margin: .5rem 25em;
+    height: 3rem;
+    width: 50%;
+}
+
+h2{
+    padding: 0.4rem .5rem;
+}
+ 
+.icons{
+    display: flex;
+    justify-content: space-between;
+    margin-right: .3rem;
+}
+
+.icon{
+    padding: .7rem .3rem;
+}

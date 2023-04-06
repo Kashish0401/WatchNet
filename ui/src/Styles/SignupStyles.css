@@ -1,0 +1,68 @@
+.image{
+    height: 100vh;
+    width: 100vw;
+}
+
+.mask{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+}
+
+.content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 100vh;
+    width: 100vw;
+    
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 14rem 0rem;
+}
+
+h1{
+    font-size: 6em;
+}
+
+h3{
+    font-size: 3em;
+}
+
+h6{
+    font-size: 2em;
+}
+
+.form {
+    display: grid;
+    width: 30%;
+    margin-top: 1rem;
+}
+input {
+    color: black;
+    border: none;
+    padding: .5rem;
+    font-size: 1.2rem;
+    border: 1px solid black;  
+}
+
+button {
+    padding: 0.5rem 1rem;
+    background-color: #e50914;
+    border: none;
+    cursor: pointer;
+    color: white;
+    margin-left: 12em;
+    margin-top: 1em;
+    width: 30%;
+    height:85%;
+    font-weight: bold;
+    font-size: 1.05rem;
+}
