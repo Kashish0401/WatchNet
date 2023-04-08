@@ -39,20 +39,20 @@ const Signup = () => {
             <h3>Watch the latest movies online anywhere, anytime for free</h3>
             <h6>Ready to watch?</h6>
             <div className="form">
-              <input type="email" 
+              <input className="signupInput" type="email" 
               placeholder='Email Address' 
               name='email' value={formValues.email} 
               onChange={
                 (e) => setFormValues({...formValues, [e.target.name]: e.target.value,})
               }/>
-              <input type="password" 
+              <input className="signupInput" type="password" 
               placeholder='password' 
               name='password' 
               value={formValues.password} 
               onChange={
                 (e) => setFormValues({...formValues, [e.target.name]: e.target.value,})
                 }/>
-              <button onClick={handleSignin}>Sign Up</button>
+              <button className="signupButton" onClick={handleSignin}>Sign Up</button>
             </div>
           </div>
         </div>
