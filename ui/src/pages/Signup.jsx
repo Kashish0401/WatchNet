@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import '../Styles/SignupStyles.css'
+import '../Styles/Signup.css'
 import image from "../Assets/signup.jpg";
 import { useState } from "react";
 import { firebaseAuth } from "../utils/firebase-config";

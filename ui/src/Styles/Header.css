@@ -15,6 +15,10 @@
     border-radius: 10px;
 }
 
+.scrolled{
+    background-color: transparent;
+}
+
 .links{
     display: flex;
     align-items: center;

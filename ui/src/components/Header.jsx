@@ -3,16 +3,21 @@ import '../Styles/Header.css'
 import {FaSearch, FaPowerOff} from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { signOut } from 'firebase/auth'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
 import { firebaseAuth } from '../utils/firebase-config'
 
-const Header = (props) => {
+const Header = ({isScrolled}) => {
   const [showSearch, setShowSearch] = useState(false);
   const [inputHover, setInputHover] = useState(false);
-  const navigate=  useNavigate();
+  /*const navigate=  useNavigate();
+  onAuthStateChanged(firebaseAuth,(currentUser) => {
+    if(!currentUser) 
+      navigate("/login");
+  });*/
+
   return (
     <>
-      <div className="header">
+      <div className={ `${isScrolled ? "scrolled header" : "header"}`}>
         <h2>WatchNet</h2>
         <div className='links'>
           <Link path="/">Home</Link>
