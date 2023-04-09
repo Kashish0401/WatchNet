@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 import { firebaseAuth } from '../utils/firebase-config'
 
+const iconStyle = {color: 'white' ,
+  fontSize: '1.2rem'}
 const Header = ({isScrolled}) => {
   const [showSearch, setShowSearch] = useState(false);
   const [inputHover, setInputHover] = useState(false);
@@ -34,7 +36,7 @@ const Header = ({isScrolled}) => {
               }
             }}
             >
-              <FaSearch/>
+              <FaSearch style={iconStyle}/>
               </button>
               <input 
               className='headerInput'
@@ -50,7 +52,7 @@ const Header = ({isScrolled}) => {
           <button 
           className='headerIconsButton'
           onClick={()=> signOut(firebaseAuth)}>
-            <FaPowerOff/>
+            <FaPowerOff style={iconStyle}/>
           </button>
         </div>
       </div>
