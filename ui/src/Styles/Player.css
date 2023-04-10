@@ -1,0 +1,16 @@
+.player{
+    width: 100vw;
+    height: 100vh;
+}
+
+.back{
+    position: absolute;
+    padding: 2rem;
+    z-index: 1;
+}
+
+video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
