@@ -1,0 +1,46 @@
+.hero{
+    position: relative;
+}
+
+.hero{
+    height: 100vh;
+    width: 100vw;
+}
+
+.poster{
+    height: 100vh;
+    width: 100vw;
+    filter: brightness(65%);
+}
+
+.info{
+    position: absolute;
+    bottom: 5rem;
+}
+
+.title{
+    width: 50%;
+    height: 50%;
+    margin-left: 5rem;
+}
+
+.heroButtons{
+    display: flex;
+    margin: 5rem;
+    gap: 2rem;
+}
+
+.heroButtons > button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    gap: 1rem;
+    border-radius: .2rem;
+    padding: .5rem;
+    padding-left: 2rem;
+    padding-right: 2.4rem;
+    border: none;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+}
