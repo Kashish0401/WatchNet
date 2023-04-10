@@ -5,9 +5,11 @@ import SeriesTitle from "../Assets/SeriesTitle.png"
 import { FaPlay } from 'react-icons/fa';
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import '../Styles/Home.css'
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate= useNavigate();
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
@@ -28,7 +30,8 @@ function Home() {
             <img src={SeriesTitle} alt="Title" className='title'/>
           </div>
           <div className='heroButtons'>
-            <button>
+            <button
+            onClick={()=> navigate("/player")}>
               <FaPlay/>
               Play
             </button>
