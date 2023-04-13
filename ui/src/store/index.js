@@ -6,36 +6,59 @@ import {
 import axios from "axios";
 import { API_KEY, TMBD_BASE_URL } from "../utils/Constants";
 
+export const getGenres = async () => {
+  const {
+    data: { genres },
+  } = await axios.get(`${TMBD_BASE_URL}/genre/movie/list?api_key=${API_KEY}`);
+  console.log(genres);
+  return genres;
+};
+
+getGenres();
+
+export const fetchMoviesTrending = async () => {
+  const data = await axios.get(
+    `${TMBD_BASE_URL}/trending/all/week?api_key=${API_KEY}`
+  );
+  //console.log(data);
+  const { results } = data.data;
+  const trending = [];
+  results.map((e) => {
+    const { original_title, backdrop_path } = e;
+    if (original_title) {
+      trending.push({ original_title, backdrop_path });
+    }
+  });
+  return trending;
+};
+
+export const fetchMoviesGenre = async (genre) => {
+  const data = await axios.get(
+    `${TMBD_BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genre}`
+  );
+  //console.log(data);
+  const { results } = data.data;
+  const moviesArray = [];
+  results.map((e) => {
+    const { original_title, backdrop_path } = e;
+    if (original_title) {
+      moviesArray.push({ original_title, backdrop_path });
+    }
+  });
+  console.log(moviesArray);
+  return moviesArray;
+};
+
+fetchMoviesGenre(10749);
+
+/*
+
 const initialState = {
   movies: [],
   genresLoadded: false,
   genres: [],
 };
 
-export const getGenres = createAsyncThunk("WatchNet/genres", async () => {
-  const {
-    data: { genres },
-  } = await axios.get(`${TMBD_BASE_URL}/genre/movie/list?api_key=${API_KEY}`);
-  //console.log(data);
-  return genres;
-});
-
-const fetchMovies = async () => {
-  const data = await axios.get(`${TMBD_BASE_URL}/trending/all/week?api_key=${API_KEY}`);
-  console.log(data);
-  const { results } = data.data
-  results.map((e) => {
-    const { original_title, poster_path } = e
-    if (original_title) {
-      console.log({original_title, poster_path})
-    }
-    })
-    console.log(results);
-  }
-
-fetchMovies()
-
-/*
 const createArrayFromRawData = (array, moviesArray, genres) => {
   console.log(array);
   array.forEach((movie) => {
@@ -83,9 +106,9 @@ export const fetchMovies = createAsyncThunk(
 );
 
 //return getRawData(`${TMBD_BASE_URL}/discover/${type}?api_key=${API_KEY}&with_genres=${genres}`);
-*/
-const WatchNetSlice = createSlice({
-  name: "WatchNet",
+
+const watchNetSlice = createSlice({
+  name: "watchNet",
   initialState,
   extraReducers: (builder) => {
     builder.addCase(getGenres.fulfilled, (state, action) => {
@@ -94,11 +117,11 @@ const WatchNetSlice = createSlice({
     });
     /*builder.addCase(fetchMovies.fulfilled, (state, action) => {
         state.genres = action.payload;
-    });*/
+    });
   },
 });
 export const store = configureStore({
   reducer: {
-    WatchNet: WatchNetSlice.reducer,
+    watchNet: watchNetSlice.reducer,
   },
-});
+});*/
