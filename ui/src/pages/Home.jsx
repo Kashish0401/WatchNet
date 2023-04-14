@@ -6,24 +6,24 @@ import { FaPlay } from 'react-icons/fa';
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import '../Styles/Home.css'
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchMovies, getGenres } from '../store';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { fetchMovies, getGenres } from '../store';
+import Slider from '../components/Slider';
 
 function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
-  //const genresLoaded = useSelector((state) => state.WatchNet.genresLoaded);
+  /*const genresLoaded = useSelector((state) => state.watchNet.genresLoaded);
   //const movies = useSelector((state) => state.WatchNet.movies);
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getGenres());
   }, []);
-/*
-  useEffect(() => {
-    if (genresLoaded) dispatch(fetchMovies({ type: "all" }));
-  }, [genresLoaded]);
-*/
+    useEffect(() => {
+      if (genresLoaded) dispatch(fetchMovies({ type: "all" }));
+    }, [genresLoaded]);
+  */
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
@@ -55,8 +55,9 @@ function Home() {
           </div>
         </div>
       </div>
+      <Slider />
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;
