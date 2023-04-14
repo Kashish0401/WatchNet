@@ -6,17 +6,17 @@ import {
 import axios from "axios";
 import { API_KEY, TMBD_BASE_URL } from "../utils/Constants";
 
-export const getGenres = async () => {
+const getGenres = async () => {
   const {
     data: { genres },
   } = await axios.get(`${TMBD_BASE_URL}/genre/movie/list?api_key=${API_KEY}`);
-  console.log(genres);
+  //console.log(genres);
   return genres;
 };
 
 getGenres();
 
-export const fetchMoviesTrending = async () => {
+const fetchMoviesTrending = async () => {
   const data = await axios.get(
     `${TMBD_BASE_URL}/trending/all/week?api_key=${API_KEY}`
   );
@@ -32,7 +32,7 @@ export const fetchMoviesTrending = async () => {
   return trending;
 };
 
-export const fetchMoviesGenre = async (genre) => {
+const fetchMoviesGenre = async (genre) => {
   const data = await axios.get(
     `${TMBD_BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genre}`
   );
@@ -45,11 +45,36 @@ export const fetchMoviesGenre = async (genre) => {
       moviesArray.push({ original_title, backdrop_path });
     }
   });
-  console.log(moviesArray);
+  //console.log(moviesArray);
   return moviesArray;
 };
 
-fetchMoviesGenre(10749);
+//fetchMoviesGenre(10749);
+
+
+export const genres = async (genre) => {
+    const genreArray = await getGenres();
+    //console.log(genreArray);
+    for (let i = 0; i < genreArray.length; i++) {
+      if (genreArray[i].name === genre) {
+        //console.log(genreArray[i].id)
+        return await genreArray[i].id;
+      }
+    }
+  };
+
+export const Trending = async () => {
+    const trendingArray = await fetchMoviesTrending();
+    //console.log(trendingArray);
+  };
+
+export const movies = async (genre) => {
+    const id = await genres(genre);
+    //console.log(id);
+    const moviesArray = await fetchMoviesGenre(id);
+    //console.log(moviesArray);
+    return moviesArray;
+  };
 
 /*
 
