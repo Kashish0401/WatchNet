@@ -24,34 +24,24 @@ function Home() {
     fetchMoviesGenre();
   }, []);
 
-  const [movie] = useState([]);
+  const [movie, setMovie] = useState({});
 
   const fetchMovies = async () => {
     const data = await axios.get(
       `${TMBD_BASE_URL}/trending/all/week?api_key=${API_KEY}`
     );
-    const { results } = data.data;
-    results.map((e) => {
-      const { original_title, backdrop_path } = e;
-      if (original_title) {
-        movie.push({ original_title, backdrop_path });
-      }
-    });
-    //console.log(trendingMovie);
+    setMovie(data);
+    console.log(movie)
   }
 
   const fetchMoviesGenre = async () => {
     const data = await axios.get(
       `${TMBD_BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=10749`
     );
-    //console.log(data);
-    const { results } = data.data;
-    results.map((e) => {
-      const { original_title, backdrop_path } = e;
-      if (original_title) {
-        movie.push({ original_title, backdrop_path });
-      }
-    });
+    setMovie(data);
+    //console.log(results)
+   // console.log(results);
+    console.log(movie);
   };
 
   return (
@@ -80,7 +70,6 @@ function Home() {
           </div>
         </div>
       </div>
-      <Slider title='Trending Now' data={movie} />
     </>
   );
 }
