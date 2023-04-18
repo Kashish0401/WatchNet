@@ -13,6 +13,7 @@ import Slider from '../components/Slider';
 function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
+  const [movie, setMovie] = useState([]);
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
@@ -21,27 +22,28 @@ function Home() {
 
   useEffect(() => {
     fetchMovies();
-    fetchMoviesGenre();
+    // fetchMoviesGenre();
   }, []);
 
-  const [movie, setMovie] = useState({});
+  console.log(movie)
 
   const fetchMovies = async () => {
     const data = await axios.get(
       `${TMBD_BASE_URL}/trending/all/week?api_key=${API_KEY}`
     );
-    setMovie(data);
-    console.log(movie)
+    setMovie(data.data.results);
   }
 
   const fetchMoviesGenre = async () => {
     const data = await axios.get(
       `${TMBD_BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=10749`
     );
-    setMovie(data);
+    console.log(data)
+    // setMovie(data);
     //console.log(results)
-   // console.log(results);
-    console.log(movie);
+    // console.log(results);
+    // console.log(movie);
+    // console.log('hi')
   };
 
   return (
