@@ -6,50 +6,64 @@ import { IoPlayCircleSharp } from "react-icons/io5";
 import { RiThumbUpFill, RiThumbDownFill } from "react-icons/ri"
 import { BsCheck } from "react-icons/bs"
 import { AiOutlinePlus } from "react-icons/ai"
-import {  BiChevronDown } from "react-icons/bi"
+import { BiChevronDown } from "react-icons/bi"
 
-const Card = (isLiked = false) => {
-  const imgSrc =
-    "https://image.tmdb.org/t/p/w500/qiAM7Y8xF8wJDDsjeSuLgzyFGmd.jpg";
+const Card = ({ movieData, isLiked = false }) => {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
+  const iconStyle = {
+    color: 'white',
+    fontSize: '2rem',
+    cursor: 'pointer',
+    tranisition: '.3sec',
+    tranisition: 'ease-in-out'
+  }
+
+  console.log(movieData);
   return (
     <div
       className="card"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <img src={imgSrc} alt="movie" />
+      <img src={`https://image.tmdb.org/t/p/w500${movieData.backdrop_path}`} alt="movie" className="movieImg" />
       {isHovered && (
         <div className="hover">
           <div className="image-vdo-container">
-            <img src={imgSrc} alt="movie" onClick={() => navigate("/player")} />
+            <img src={`https://image.tmdb.org/t/p/w500${movieData.backdrop_path}`} alt="movie" onClick={() => navigate("/player")} className="hoverImg" />
             <video
+              className="hoverVdo"
               src={video}
-              autoplay
+              autoPlay
               loop
               muted
               onClick={() => navigate("/player")}
             />
           </div>
-          <div className="info">
-            <h3 className="name" onClick={() => navigate("/player")}>
-              MovieName
-            </h3>
-            <IoPlayCircleSharp title="play" />
-            <RiThumbUpFill title="Like" />
-            <RiThumbDownFill title="Dislike" />
-            {
-              isLiked ? (
-                <BsCheck title="Remove from List" />
-              ) : (
-                <AiOutlinePlus title="Add to my list" />
-            )}
+          <div className="hoverInfo">
+            <h4 className="name" onClick={() => navigate("/player")}>
+              {movieData?.original_name ? movieData.original_name : movieData.original_title}
+            </h4>
+            <div className="outerCtrl">
+              <div className="innerCtrl">
+                <IoPlayCircleSharp title="play" style={iconStyle} />
+                <RiThumbUpFill title="Like" />
+                <RiThumbDownFill title="Dislike" />
+                {
+                  isLiked ? (
+                    <BsCheck title="Remove from List" />
+                  ) : (
+                    <AiOutlinePlus title="Add to my list" />
+                  )}
+              </div>
+            </div>
+            <div className="infoo">
+              <BiChevronDown title="More Info" />
+            </div>
           </div>
-          <div className="infoo">
-            <BiChevronDown title="More Info"/>
-          </div>
+
         </div>
+
       )}
     </div>
   );

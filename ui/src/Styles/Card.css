@@ -1,0 +1,69 @@
+.card{
+    color: white;
+    max-width: 230px;
+    width: 230px;
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+}
+
+.movieImg{
+    border-radius: 0.2rem;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+.hover{
+    z-index: 20;
+    height: max-content;
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: -18vh;
+    left: 0;
+    border-radius: 0.3rem;
+    box-shadow: rgba(0,0,0,0.75) 0px 3px 10px;
+    background-color: #181818;
+    transition: 0.3sec ease-in-out;
+}
+
+.image-vdo-container{
+    position: relative;
+    height: 140px;
+}
+
+.hoverImg{
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 0.3rem;
+    top: 0;
+    z-index: 4;
+    position: absolute;
+}
+
+.hoverVdo{
+    object-fit: cover;
+    border-radius: 0.3rem;
+    top: 0;
+    z-index: 5;
+    position: absolute;
+}
+
+.outerCtrl{
+    display: flex;
+    justify-content: space-between;
+}
+
+.innerCtrl{
+    display: flex;
+    gap: 1rem;
+}
+.hoverInfo{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 0.5rem;
+}
