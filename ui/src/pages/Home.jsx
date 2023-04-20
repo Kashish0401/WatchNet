@@ -5,45 +5,36 @@ import SeriesTitle from "../Assets/SeriesTitle.png"
 import { FaPlay } from 'react-icons/fa';
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import '../Styles/Home.css'
-import { useNavigate } from 'react-router-dom';
-import { API_KEY, TMBD_BASE_URL } from "../utils/Constants";
+import { API_KEY, TMDB_BASE_URL } from "../utils/Constants"
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import Slider from '../components/Slider';
 
 function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [loading, setloading] = useState(false);
+  const [movies, setMovies] = useState([]); 
   const navigate = useNavigate();
-  const [movie, setMovie] = useState([]);
+
+  useEffect(() => { 
+    const fetchData = async () => {
+      try {
+        setloading(true);
+        const movie = await axios.get(`${TMDB_BASE_URL}/trending/all/week?api_key=${API_KEY}`);
+        console.log(movie);
+        setMovies(movie.data.results);
+        setloading(false)
+      } catch (error) {
+        console.log(error);
+        setloading(false);
+      }
+    }
+    fetchData();
+  }, [])
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
-  };
-
-  useEffect(() => {
-    fetchMovies();
-    // fetchMoviesGenre();
-  }, []);
-
-  console.log(movie)
-
-  const fetchMovies = async () => {
-    const data = await axios.get(
-      `${TMBD_BASE_URL}/trending/all/week?api_key=${API_KEY}`
-    );
-    setMovie(data.data.results);
-  }
-
-  const fetchMoviesGenre = async () => {
-    const data = await axios.get(
-      `${TMBD_BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=10749`
-    );
-    console.log(data)
-    // setMovie(data);
-    //console.log(results)
-    // console.log(results);
-    // console.log(movie);
-    // console.log('hi')
   };
 
   return (
@@ -72,6 +63,7 @@ function Home() {
           </div>
         </div>
       </div>
+      <Slider movies={movies} />
     </>
   );
 }
