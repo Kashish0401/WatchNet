@@ -13,13 +13,13 @@ const Card = ({ movieData, isLiked = false }) => {
   const navigate = useNavigate();
   const iconStyle = {
     color: 'white',
-    fontSize: '2rem',
+    fontSize: '1.5rem',
     cursor: 'pointer',
     tranisition: '.3sec',
     tranisition: 'ease-in-out'
   }
 
-  console.log(movieData);
+  //console.log(movieData);
   return (
     <div
       className="card"
@@ -47,23 +47,21 @@ const Card = ({ movieData, isLiked = false }) => {
             <div className="outerCtrl">
               <div className="innerCtrl">
                 <IoPlayCircleSharp title="play" style={iconStyle} />
-                <RiThumbUpFill title="Like" />
-                <RiThumbDownFill title="Dislike" />
+                <RiThumbUpFill title="Like" style={iconStyle} />
+                <RiThumbDownFill title="Dislike" style={iconStyle} />
                 {
                   isLiked ? (
-                    <BsCheck title="Remove from List" />
+                    <BsCheck title="Remove from List" style={iconStyle} />
                   ) : (
-                    <AiOutlinePlus title="Add to my list" />
+                    <AiOutlinePlus title="Add to my list" style={iconStyle} />
                   )}
               </div>
             </div>
             <div className="infoo">
-              <BiChevronDown title="More Info" />
+              <BiChevronDown title="More Info" style={iconStyle} />
             </div>
           </div>
-
         </div>
-
       )}
     </div>
   );
