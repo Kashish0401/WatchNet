@@ -26,7 +26,7 @@ const Slider = () => {
       try {
         const movie = await axios.get(`${TMDB_BASE_URL}/discover/movie?api_key=${API_KEY}`);
         setMovies(movie.data.results);
-        console.log(movie);
+        //console.log(movie);
       } catch (error) {
         console.log(error);
       }
@@ -36,7 +36,7 @@ const Slider = () => {
       try {
         const movie = await axios.get(`${TMDB_BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=28`);
         setAction(movie.data.results);
-        console.log(movie);
+        //console.log(movie);
       } catch (error) {
         console.log(error);
       }
@@ -46,7 +46,7 @@ const Slider = () => {
       try {
         const movie = await axios.get(`${TMDB_BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=27`);
         setHorror(movie.data.results);
-        console.log(movie);
+        //console.log(movie);
       } catch (error) {
         console.log(error);
       }
@@ -56,7 +56,7 @@ const Slider = () => {
       try {
         const movie = await axios.get(`${TMDB_BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=10749`);
         setRomance(movie.data.results);
-        console.log(movie);
+        //console.log(movie);
       } catch (error) {
         console.log(error);
       }
@@ -66,7 +66,7 @@ const Slider = () => {
       try {
         const movie = await axios.get(`${TMDB_BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=35`);
         setComedy(movie.data.results);
-        console.log(movie);
+        //console.log(movie);
       } catch (error) {
         console.log(error);
       }

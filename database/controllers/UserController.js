@@ -3,12 +3,13 @@ const User = require("../models/UserModel");
 module.exports.addToLikedMovies = async (req, res) => {
     try {
         const { email, data } = req.body;
-        const user = await User.findOne({ email });
+        const user = await await User.findOne({ email });
         if (user) {
             const { likedMovies } = user;
             const movieAlreadyLiked = likedMovies.find(({ id }) => {
-                (id = data.id);
+                (id === data.id);
             });
+            console.log(id);
             if (!movieAlreadyLiked) {
                 await User.findByIdAndUpdate(
                     user._id,
