@@ -5,27 +5,18 @@ import SeriesTitle from "../Assets/SeriesTitle.png"
 import { FaPlay } from 'react-icons/fa';
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import '../Styles/Home.css'
-import { API_KEY, TMDB_BASE_URL } from "../utils/Constants"
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import CardSlider from '../components/CardSlider';
+import Slider from '../components/Slider';
+import { onAuthStateChanged } from 'firebase/auth';
+import { firebaseAuth } from '../utils/firebase-config';
 
 function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [trending, setTrending] = useState([]); 
   const navigate = useNavigate();
 
-  useEffect(() => { 
-    const trending = async () => {
-      try {
-        const movie = await axios.get(`${TMDB_BASE_URL}/trending/all/week?api_key=${API_KEY}`);
-        setTrending(movie.data.results);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    trending();
-  }, [])
+  onAuthStateChanged(firebaseAuth, (currentUser) => {
+    if (!currentUser) navigate("/login");
+  });
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
@@ -58,7 +49,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <CardSlider data={trending} title={"Trending"} />
+      <Slider />
     </>
   );
 }
