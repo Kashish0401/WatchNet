@@ -23,7 +23,7 @@ const Header = ({isScrolled}) => {
         <h2>WatchNet</h2>
         <div className='links'>
           <Link path="/">Home</Link>
-          <Link path="/">My List</Link>
+          <Link path="/mylist">My List</Link>
         </div>
         <div className="icons">
           <div className={`search ${showSearch ? "showSearch" : ""}`}>
