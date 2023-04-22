@@ -8,28 +8,23 @@ import '../Styles/Home.css'
 import { API_KEY, TMDB_BASE_URL } from "../utils/Constants"
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Slider from '../components/Slider';
+import CardSlider from '../components/CardSlider';
 
 function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [loading, setloading] = useState(false);
-  const [movies, setMovies] = useState([]); 
+  const [trending, setTrending] = useState([]); 
   const navigate = useNavigate();
 
   useEffect(() => { 
-    const fetchData = async () => {
+    const trending = async () => {
       try {
-        setloading(true);
         const movie = await axios.get(`${TMDB_BASE_URL}/trending/all/week?api_key=${API_KEY}`);
-        console.log(movie);
-        setMovies(movie.data.results);
-        setloading(false)
+        setTrending(movie.data.results);
       } catch (error) {
         console.log(error);
-        setloading(false);
       }
     }
-    fetchData();
+    trending();
   }, [])
 
   window.onscroll = () => {
@@ -63,7 +58,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <Slider movies={movies} />
+      <CardSlider data={trending} title={"Trending"} />
     </>
   );
 }
