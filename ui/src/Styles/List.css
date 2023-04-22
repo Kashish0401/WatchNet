@@ -1,0 +1,19 @@
+.listContent{
+    margin: 2.3rem;
+    margin-top: 6rem;
+    margin-left: 6.5rem;
+    gap: 3rem;
+}
+
+.listContent>h1{
+    margin-left: 3rem;
+    color: white;
+    font-size: 4rem;
+    margin-bottom: 2rem;
+}
+
+.listMovies{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
