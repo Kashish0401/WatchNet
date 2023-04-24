@@ -9,18 +9,18 @@ const CardSlider = ({ title, data }) => {
   const listRef = useRef();
 
   const iconStyle = {
-    fontSize : '2rem'
+    fontSize: '2rem'
   }
 
   const handleDirection = (direction) => {
     console.log(listRef);
     let dist = listRef.current.getBoundingClientRect().x - 70;
     if (direction === "left" && sliderPosition > 0) {
-      listRef.current.style.transform = `translateX(${230 + dist}px)`;
+      listRef.current.style.transform = `translateX(${320 + dist}px)`;
       setSliderPosition(sliderPosition - 1);
     }
     if (direction === "right" && sliderPosition < 4) {
-      listRef.current.style.transform = `translateX(${-230 + dist}px)`;
+      listRef.current.style.transform = `translateX(${-320 + dist}px)`;
       setSliderPosition(sliderPosition + 1);
     }
   }

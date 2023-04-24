@@ -32,7 +32,18 @@ const Card = ({ movieData, isLiked = false }) => {
 
   const addToList = async () => {
     try {
-      await axios.post("http://localhost:5000/database/user/add",{email, data:movieData})
+      await axios.post("http://localhost:5000/database/user/add", { email, data: movieData })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const removeFromLiked = async (id) => {
+    try {
+      await axios.put("http://localhost:5000/database/user/remove", {
+        email, id
+      });
+
     } catch (error) {
       console.log(error);
     }
@@ -70,7 +81,7 @@ const Card = ({ movieData, isLiked = false }) => {
                 <RiThumbDownFill title="Dislike" style={iconStyle} />
                 {
                   isLiked ? (
-                    <BsCheck title="Remove from List" style={iconStyle} />
+                    <BsCheck title="Remove from List" onClick={() => removeFromLiked(movieData.id)} style={iconStyle} />
                   ) : (
                     <AiOutlinePlus title="Add to my list" onClick={addToList} style={iconStyle} />
                   )}
