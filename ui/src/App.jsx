@@ -7,13 +7,13 @@ import Player from './pages/Player';
 import List from './pages/List';
 
 export default function App() {
-  return (
+  return(
     <BrowserRouter>
       <Routes>
-        <Route  path='/login' element={<Login/>} />
-        <Route  path='/signup' element= {<Signup/>}/>
-        <Route  path='/' element={<Home/>}/>
-        <Route path='/home' element={<Home/>}/>
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/home' element={<Home />} />
         <Route path='/player' element={<Player />} />
         <Route path='/mylist' element={<List />} />
       </Routes>

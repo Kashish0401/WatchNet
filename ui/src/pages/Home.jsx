@@ -15,7 +15,7 @@ function Home() {
   const navigate = useNavigate();
 
   onAuthStateChanged(firebaseAuth, (currentUser) => {
-    if (!currentUser) navigate("/login");
+    if (!currentUser) navigate("/signup");
   });
 
   window.onscroll = () => {

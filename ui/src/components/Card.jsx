@@ -20,8 +20,7 @@ const Card = ({ movieData, isLiked = false }) => {
     color: 'white',
     fontSize: '1.5rem',
     cursor: 'pointer',
-    tranisition: '.3sec',
-    tranisition: 'ease-in-out'
+    tranisition: '.3sec ease-in-out'
   }
 
   onAuthStateChanged(firebaseAuth, (currentUser) => {
@@ -76,7 +75,7 @@ const Card = ({ movieData, isLiked = false }) => {
             </h4>
             <div className="outerCtrl">
               <div className="innerCtrl">
-                <IoPlayCircleSharp title="play" style={iconStyle} />
+                <IoPlayCircleSharp title="play" style={iconStyle} onClick={() => navigate("/player")}/>
                 <RiThumbUpFill title="Like" style={iconStyle} />
                 <RiThumbDownFill title="Dislike" style={iconStyle} />
                 {
